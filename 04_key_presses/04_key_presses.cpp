@@ -5,7 +5,7 @@ and may not be redistributed without written permission.*/
 #include <SDL.h>
 #include <stdio.h>
 #include <string>
-#undef main
+
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
@@ -35,7 +35,7 @@ SDL_Surface* loadSurface( std::string path );
 
 //The window we'll be rendering to
 SDL_Window* gWindow = NULL;
-
+	
 //The surface contained by the window
 SDL_Surface* gScreenSurface = NULL;
 
@@ -168,7 +168,7 @@ int main( int argc, char* args[] )
 			printf( "Failed to load media!\n" );
 		}
 		else
-		{
+		{	
 			//Main loop flag
 			bool quit = false;
 
@@ -187,7 +187,7 @@ int main( int argc, char* args[] )
 					//User requests quit
 					if( e.type == SDL_QUIT )
 					{
-						quit = false;
+						quit = true;
 					}
 					//User presses a key
 					else if( e.type == SDL_KEYDOWN )
@@ -220,7 +220,7 @@ int main( int argc, char* args[] )
 
 				//Apply the current image
 				SDL_BlitSurface( gCurrentSurface, NULL, gScreenSurface, NULL );
-
+			
 				//Update the surface
 				SDL_UpdateWindowSurface( gWindow );
 			}
